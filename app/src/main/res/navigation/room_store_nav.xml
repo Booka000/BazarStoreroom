@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/roomstore_nav"
+    app:startDestination="@id/productsFragment">
+
+    <fragment
+        android:id="@+id/productsFragment"
+        android:name="com.albara.bazarstoreroom.ui.fragments.ProductsFragment"
+        android:label="fragment_products"
+        tools:layout="@layout/fragment_products" />
+    <fragment
+        android:id="@+id/checklistFragment"
+        android:name="com.albara.bazarstoreroom.ui.fragments.ChecklistFragment"
+        android:label="fragment_checklist"
+        tools:layout="@layout/fragment_checklist" />
+    <fragment
+        android:id="@+id/cartFragment"
+        android:name="com.albara.bazarstoreroom.ui.fragments.CartFragment"
+        android:label="fragment_cart"
+        tools:layout="@layout/fragment_cart" />
+</navigation>

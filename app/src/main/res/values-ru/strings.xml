@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Базарный склад</string>
+    <string name="products_nav_item">Продукты</string>
+    <string name="checking_nav_item">Проверка</string>
+    <string name="cart_nav_item">корзина</string>
+    <string name="placeholder">Заполнитель</string>
+    <string name="noSectionPlaceholder">Без раздела</string>
+    <string name="addSection">Добавить раздел</string>
+    <string name="sectionTitle">Название раздела</string>
+    <string name="add">Добавить</string>
+    <string name="all">Все</string>
+    <string name="addProduct">Добавить продукт</string>
+    <string name="productUnit">Единица</string>
+    <string name="quantityInWeekdays">Количество в рабочие дни</string>
+    <string name="quantityInWeekend">Количество в выходные</string>
+    <string name="selectSection">Выберите раздел</string>
+    <string name="productTitle">Название продукта</string>
+    <string name="sectionTitleAddingError">Пожалуйста, укажите название раздела</string>
+    <string name="productTitleAddingError">Пожалуйста, укажите название продукта</string>
+    <string name="productNumberAddingError">Пожалуйста, указывайте только цифры</string>
+    <string name="weekdays">Будни: </string>
+    <string name="weekend">Выходные: </string>
+    <string name="order">Заказ: </string>
+</resources>

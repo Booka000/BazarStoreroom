@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">Bazar Storeroom</string>
+    <string name="products_nav_item">Products</string>
+    <string name="checking_nav_item">Checklist</string>
+    <string name="cart_nav_item">Cart</string>
+    <string name="placeholder">Placeholder</string>
+    <string name="noSectionPlaceholder">Without Section</string>
+    <string name="addSection">Add section</string>
+    <string name="sectionTitle">Section title</string>
+    <string name="add">Add</string>
+    <string name="all">All</string>
+    <string name="addProduct">Add product</string>
+    <string name="productUnit">Unit</string>
+    <string name="quantityInWeekdays">Quantity on weekdays</string>
+    <string name="quantityInWeekend">Quantity on Weekend</string>
+    <string name="selectSection">Select Section</string>
+    <string name="productTitle">Product Title</string>
+    <string name="sectionTitleAddingError">Please, indicate the section title</string>
+    <string name="productTitleAddingError">Please, indicate the product title</string>
+    <string name="productNumberAddingError">Please, indicate only numbers </string>
+    <string name="weekdays">Weekdays: </string>
+    <string name="weekend">Weekend: </string>
+    <string name="order">Order: </string>
+</resources>
