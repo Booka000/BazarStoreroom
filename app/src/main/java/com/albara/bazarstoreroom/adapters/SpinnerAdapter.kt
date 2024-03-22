@@ -17,7 +17,7 @@ class SpinnerAdapter(context : Context, private val items : MutableList<Section>
 
         val item = getItem(position)
         val textView = view.findViewById<TextView>(android.R.id.text1)
-        textView.text = item?.sectionName
+        textView.text = item.sectionName
 
         return view
     }
@@ -25,10 +25,9 @@ class SpinnerAdapter(context : Context, private val items : MutableList<Section>
     override fun getDropDownView(position: Int, convertView: View?, parent: ViewGroup): View {
         val view = convertView ?: LayoutInflater.from(context)
             .inflate(android.R.layout.simple_spinner_dropdown_item, parent, false)
-
         val item = getItem(position)
         val textView = view.findViewById<TextView>(android.R.id.text1)
-        textView.text = item?.sectionName
+        textView.text = item.sectionName
 
         return view
     }
