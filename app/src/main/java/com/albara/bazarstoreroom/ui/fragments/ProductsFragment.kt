@@ -78,6 +78,7 @@ class ProductsFragment : BaseFragment<FragmentProductsBinding, MainViewModel>() 
         }
 
         binding.ActionButtonAddSection.setOnClickListener{
+            onAddButtonClicked()
             popUpAddSectionDialog()
         }
 
@@ -98,6 +99,7 @@ class ProductsFragment : BaseFragment<FragmentProductsBinding, MainViewModel>() 
         }
 
         binding.actionButtonAddProduct.setOnClickListener{
+            onAddButtonClicked()
             popUpAddProductDialog()
         }
     }

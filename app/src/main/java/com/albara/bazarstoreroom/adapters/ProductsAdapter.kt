@@ -15,15 +15,15 @@ class ProductsAdapter(private val products : List<Product>)
             fun bind( product: Product) {
                 viewDataBinding.apply {
                     productName.text = product.productName
-                    val amountForWeekday ="${product.amountForWeekday
+                    val amountForWeekday =" ${product.amountForWeekday
                             ?.toString() ?: "??"} ${product.unit}"
                     amountToOrderWeekday.append(amountForWeekday)
 
-                    val amountForWeekend = "${product.amountForWeekend
+                    val amountForWeekend = " ${product.amountForWeekend
                         ?.toString() ?: "??"} ${product.unit}"
                     amountToOrderWeekend.append(amountForWeekend)
 
-                    val amountToOrder = "${product.amountToOrder
+                    val amountToOrder = " ${product.amountToOrder
                         ?.toString() ?: "??"} ${product.unit}"
                     orderAmount.append(amountToOrder)
                 }

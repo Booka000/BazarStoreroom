@@ -18,7 +18,7 @@
     <string name="productTitle">Название продукта</string>
     <string name="sectionTitleAddingError">Пожалуйста, укажите название раздела</string>
     <string name="productTitleAddingError">Пожалуйста, укажите название продукта</string>
-    <string name="productNumberAddingError">Пожалуйста, указывайте только цифры</string>
+    <string name="productNumberAddingError">Пожалуйста, укажите только цифры</string>
     <string name="weekdays">Будни: </string>
     <string name="weekend">Выходные: </string>
     <string name="order">Заказ: </string>
