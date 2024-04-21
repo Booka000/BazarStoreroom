@@ -16,23 +16,4 @@ abstract class StoreroomDatabase : RoomDatabase() {
 
     abstract fun getDao() : StoreroomDao
 
-
-    companion object {
-
-        private var INSTANCE : StoreroomDatabase? = null
-
-        private val LOCK = Any()
-
-        operator fun invoke(context: Context) = INSTANCE ?: synchronized(LOCK){
-            INSTANCE ?: createDataBase(context).also { INSTANCE = it }
-        }
-
-        private fun createDataBase(context: Context) =
-            Room.databaseBuilder(
-                context.applicationContext,
-                StoreroomDatabase::class.java,
-                "StoreRoomDatabase"
-            ).build()
-    }
-
 }

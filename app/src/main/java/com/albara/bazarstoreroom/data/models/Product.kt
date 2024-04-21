@@ -9,8 +9,8 @@ data class Product(
     val id : Int,
     val productName : String,
     val unit : String,
-    val amountForWeekday : Double?,
-    val amountForWeekend : Double?,
+    val amountForWeekday : Double? = null,
+    val amountForWeekend : Double? = null,
     val amountToOrder : Double? = null,
     val sectionId : Int? = null
 )

@@ -1,4 +1,4 @@
-package com.albara.bazarstoreroom.repository
+package com.albara.bazarstoreroom.data.repository
 
 import com.albara.bazarstoreroom.data.models.Product
 import com.albara.bazarstoreroom.data.models.Section
@@ -7,8 +7,11 @@ import com.albara.bazarstoreroom.data.roomDB.StoreroomDao
 import com.albara.bazarstoreroom.data.roomDB.StoreroomDatabase
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.map
+import javax.inject.Inject
 
-class Repository (db : StoreroomDatabase) {
+class Repository @Inject constructor(
+    db : StoreroomDatabase
+) {
 
     private val dao : StoreroomDao = db.getDao()
 

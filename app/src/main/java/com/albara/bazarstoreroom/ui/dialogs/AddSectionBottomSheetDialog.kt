@@ -28,6 +28,7 @@ class AddSectionBottomSheetDialog(val onAddButtonClicked : (Section) -> Unit) : 
 
         binding.addSectionDialogButton.setOnClickListener{
             val sectionTitle = binding.addSectionDialogText.text.toString()
+            val color = binding.addSectionDialogText
             sectionTitle.also {
                 if(it.isNotBlank()) {
                     val section = Section(0, it)

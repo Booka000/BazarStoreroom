@@ -1,4 +1,4 @@
-package com.albara.bazarstoreroom.adapters
+package com.albara.bazarstoreroom.ui.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -8,7 +8,6 @@ import com.albara.bazarstoreroom.databinding.ProductItemBinding
 
 class ProductsAdapter(private val products : List<Product>)
     : RecyclerView.Adapter<ProductsAdapter.ProductViewHolder>() {
-
 
     inner class ProductViewHolder (private val viewDataBinding: ProductItemBinding)
         : RecyclerView.ViewHolder(viewDataBinding.root)  {
@@ -36,12 +35,21 @@ class ProductsAdapter(private val products : List<Product>)
         return ProductViewHolder(binding)
     }
 
-    override fun getItemCount(): Int {
-        return products.size
-    }
+    override fun getItemCount(): Int = products.size
+
 
     override fun onBindViewHolder(holder: ProductViewHolder, position: Int) {
-        holder.bind(products[position])
+        val product = products[position]
+        holder.bind(product)
+        holder.itemView.setOnClickListener {
+            onProductClickListener?.let { it(product) }
+        }
+    }
+
+    private var onProductClickListener: ((Product) -> Unit)? = null
+
+    fun setOnProductClickListener(listener : (Product) -> Unit) {
+        onProductClickListener = listener
     }
 
 }

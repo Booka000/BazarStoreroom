@@ -1,4 +1,4 @@
-package com.albara.bazarstoreroom.adapters
+package com.albara.bazarstoreroom.ui.adapters
 
 import android.content.Context
 import android.view.LayoutInflater

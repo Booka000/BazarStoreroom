@@ -1,4 +1,4 @@
-package com.albara.bazarstoreroom.adapters
+package com.albara.bazarstoreroom.ui.adapters
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.albara.bazarstoreroom.R
+import com.albara.bazarstoreroom.data.models.Product
 import com.albara.bazarstoreroom.data.models.SectionWithProducts
 import com.albara.bazarstoreroom.databinding.SectionItemBinding
 
@@ -17,9 +18,11 @@ class SectionAdapter :  RecyclerView.Adapter<SectionAdapter.ProductViewHolder>()
             fun bind(context : Context, sectionWithProducts: SectionWithProducts) {
                 viewDataBinding.sectionName.text = sectionWithProducts.section?.sectionName ?:
                 context.getString(R.string.noSectionPlaceholder)
-                viewDataBinding.rvSection.apply {
-                    adapter = ProductsAdapter(sectionWithProducts.products)
+                val adapter = ProductsAdapter(sectionWithProducts.products)
+                onProductClickListener?.let {
+                    adapter.setOnProductClickListener(it)
                 }
+                viewDataBinding.rvSection.adapter = adapter
             }
         }
 
@@ -48,5 +51,11 @@ class SectionAdapter :  RecyclerView.Adapter<SectionAdapter.ProductViewHolder>()
 
     override fun onBindViewHolder(holder: ProductViewHolder, position: Int) {
         holder.bind(holder.itemView.context, differ.currentList[position])
+    }
+
+    private var onProductClickListener: ((Product) -> Unit)? = null
+
+    fun setOnProductClickListener(listener : (Product) -> Unit) {
+        onProductClickListener = listener
     }
 }

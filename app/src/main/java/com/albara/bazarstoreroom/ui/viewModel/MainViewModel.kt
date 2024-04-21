@@ -1,19 +1,33 @@
-package com.albara.bazarstoreroom.ui
+package com.albara.bazarstoreroom.ui.viewModel
 
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.albara.bazarstoreroom.data.models.Product
 import com.albara.bazarstoreroom.data.models.Section
-import com.albara.bazarstoreroom.repository.Repository
+import com.albara.bazarstoreroom.data.repository.Repository
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class MainViewModel (private val repository: Repository) : ViewModel() {
+@HiltViewModel
+class MainViewModel @Inject constructor (
+    private val repository: Repository
+) : ViewModel() {
 
     private val showType = MutableStateFlow<ShowType>(ShowType.AllProducts)
+
+    var bottomSheetDialogIsVisible by mutableStateOf(false)
+        private set
+    var bottomSheetDialogProduct by mutableStateOf(Product(0,"",""))
+        private set
+
 
     val sectionsWithProducts = showType.flatMapLatest { showType ->
         when(showType) {
@@ -36,5 +50,14 @@ class MainViewModel (private val repository: Repository) : ViewModel() {
 
     fun updateShowType(newShowType: ShowType){
         showType.value = newShowType
+    }
+
+    fun openBottomSheetDialogProduct(product: Product){
+        bottomSheetDialogProduct = product
+        bottomSheetDialogIsVisible = true
+    }
+
+    fun closeBottomSheetDialog(){
+        bottomSheetDialogIsVisible = false
     }
 }

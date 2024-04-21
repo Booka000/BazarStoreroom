@@ -11,4 +11,4 @@ data class SectionWithProducts (
         entityColumn = "sectionId"
     )
     val products: List<Product>
-    )
+)

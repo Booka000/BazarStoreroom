@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/productsFragment"
-        android:name="com.albara.bazarstoreroom.ui.fragments.ProductsFragment"
+        android:name="com.albara.bazarstoreroom.ui.fragments.products_fragment.ProductsFragment"
         android:label="fragment_products"
         tools:layout="@layout/fragment_products" />
     <fragment

@@ -1,4 +1,4 @@
-package com.albara.bazarstoreroom.ui
+package com.albara.bazarstoreroom.ui.viewModel
 
 sealed class ShowType {
     data object AllProducts : ShowType()

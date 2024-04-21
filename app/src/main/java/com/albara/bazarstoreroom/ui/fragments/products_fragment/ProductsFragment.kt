@@ -1,23 +1,26 @@
-package com.albara.bazarstoreroom.ui.fragments
+package com.albara.bazarstoreroom.ui.fragments.products_fragment
 
 import android.os.Bundle
 import android.view.View
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.widget.AdapterView
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.albara.bazarstoreroom.R
-import com.albara.bazarstoreroom.adapters.SectionAdapter
-import com.albara.bazarstoreroom.adapters.SpinnerAdapter
 import com.albara.bazarstoreroom.data.models.Section
 import com.albara.bazarstoreroom.databinding.FragmentProductsBinding
-import com.albara.bazarstoreroom.ui.MainActivity
-import com.albara.bazarstoreroom.ui.MainViewModel
-import com.albara.bazarstoreroom.ui.ShowType
+import com.albara.bazarstoreroom.ui.adapters.SectionAdapter
+import com.albara.bazarstoreroom.ui.adapters.SpinnerAdapter
 import com.albara.bazarstoreroom.ui.dialogs.AddProductBottomSheetDialog
 import com.albara.bazarstoreroom.ui.dialogs.AddSectionBottomSheetDialog
+import com.albara.bazarstoreroom.ui.fragments.BaseFragment
+import com.albara.bazarstoreroom.ui.ui.theme.BazarStoreroomTheme
+import com.albara.bazarstoreroom.ui.viewModel.MainViewModel
+import com.albara.bazarstoreroom.ui.viewModel.ShowType
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class ProductsFragment : BaseFragment<FragmentProductsBinding, MainViewModel>() {
 
     private val rotateOpen : Animation by lazy{ AnimationUtils.loadAnimation(context, R.anim.rotate_open_anim)}
@@ -32,7 +35,8 @@ class ProductsFragment : BaseFragment<FragmentProductsBinding, MainViewModel>() 
 
 
     override fun getMainViewModel(): MainViewModel {
-        return (activity as MainActivity).viewModel
+        val viewModel : MainViewModel by viewModels()
+        return viewModel
     }
 
     override fun inflateBinding(): FragmentProductsBinding {
@@ -42,8 +46,6 @@ class ProductsFragment : BaseFragment<FragmentProductsBinding, MainViewModel>() 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-
 
         binding.rvSectionWithProducts.layoutManager = LinearLayoutManager(requireContext())
         binding.rvSectionWithProducts.adapter = sectionAdapter
@@ -56,6 +58,18 @@ class ProductsFragment : BaseFragment<FragmentProductsBinding, MainViewModel>() 
 
         setListeners()
         setCollectors()
+        setContent()
+    }
+
+    private fun setContent(){
+        binding.composeView.setContent {
+                BottomSheetDialog(
+                    product = viewModel.bottomSheetDialogProduct,
+                    sheetIsVisible = viewModel.bottomSheetDialogIsVisible
+                ) {
+                    viewModel.closeBottomSheetDialog()
+                }
+        }
     }
 
     private fun setCollectors() {
@@ -101,6 +115,10 @@ class ProductsFragment : BaseFragment<FragmentProductsBinding, MainViewModel>() 
         binding.actionButtonAddProduct.setOnClickListener{
             onAddButtonClicked()
             popUpAddProductDialog()
+        }
+
+        sectionAdapter.setOnProductClickListener { product ->
+            viewModel.openBottomSheetDialogProduct(product)
         }
     }
 
